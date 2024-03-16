@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ListView: View {
+    
+    let contactList: [Person]
+    
     var body: some View {
-        Text("Hello, World!11")
+         NavigationStack {
+            List(contactList) { contact in
+                ContactRowView(contact: contact)
+            }
+            .listStyle(.plain)
+            .navigationTitle("Contacts")
+         }
     }
 }
 
 #Preview {
-    ListView()
+    ListView(contactList: Person.getContactList())
 }
